@@ -1,0 +1,13 @@
+package bgins:sparkline-svg@0.1.0
+
+world sparkline {
+  export generate: func(
+    data: list<u32>,
+    title: string,
+    description: string,
+    width: u32,
+    height: u32,
+    line-color: string,
+    fill-color: string
+  ) -> string
+}

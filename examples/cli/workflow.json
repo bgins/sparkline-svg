@@ -1,0 +1,30 @@
+{
+  "tasks": [
+    {
+      "cause": null,
+      "meta": {
+        "fuel": 18446744073709552000,
+        "memory": 4294967296,
+        "time": 100000
+      },
+      "prf": [],
+      "run": {
+        "input": {
+          "args": [
+            [1, 0, 5, 4, 8, 10, 20, 10, 5, 4],
+            "An SVG Title",
+            "An SVG Description",
+            500,
+            200,
+            "#2e4374",
+            "#7c81ad"
+          ],
+          "func": "generate"
+        },
+        "nnc": "",
+        "op": "wasm/run",
+        "rsc": "ipfs://bafybeig6sgwcrudpkkjbnuvwyhuj4sk3oysaq2f3nblvmfprw5ikrbtrua"
+      }
+    }
+  ]
+}

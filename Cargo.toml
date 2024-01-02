@@ -1,0 +1,19 @@
+[package]
+name = "sparkline-svg"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+csscolorparser = "0.6.2"
+svg = "0.14.0"
+wit-bindgen = "0.13"
+
+[lib]
+doc = false
+bench = false
+crate-type = ["cdylib"]
+
+[features]
+default = []

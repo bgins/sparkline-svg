@@ -1,0 +1,5 @@
+**/homestar.db
+**/output.svg
+**/sparkline_svg.wasm
+/target
+/Cargo.lock
