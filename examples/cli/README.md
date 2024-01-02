@@ -62,7 +62,7 @@ homestar start
 In a separate terminal window, run the workflow
 
 ```sh
-homestar run workflow.json
+homestar run -w workflow.json
 ```
 
 The Homestar node will log a message that looks like:
