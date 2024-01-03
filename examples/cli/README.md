@@ -1,3 +1,5 @@
+## CLI Example
+
 This example generates sparklines by running Sparkline SVG on the Homestar runtime.
 
 ## Setup
@@ -65,7 +67,9 @@ In a separate terminal window, run the workflow.
 homestar run -w workflow.json
 ```
 
-This command will output a table with a progress section. Copy the `cid` from the progress section and retrieve the associated receipt from Kubo. For example:
+The CLI reports workflow information when it starts running a workflow. On first run, we won't see results, but on a second run the CLI will report a replayed receipt that contains our SVG. (A future version of the CLI will include a means for checking the status of active and completed workflows.)
+
+After running the workflow a second time, check the replayed receipts section. Copy the `cid` from the receipts computed section and retrieve the associated receipt from Kubo. For example:
 
 ```sh
 ipfs dag get bafyrmihk2ibe3lud2mdzbjjr2yc47ufynicomphhbhmctgewpb3uudpgia | jq ."out[1]" --raw-output > output.svg

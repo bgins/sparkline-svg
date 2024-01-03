@@ -12,6 +12,8 @@ Build with a Wasm target.
 cargo build --target wasm32-unknown-unknown
 ```
 
+## Componentize
+
 Componentize the Wasm binary.
 
 ```sh
