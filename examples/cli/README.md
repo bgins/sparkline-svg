@@ -18,9 +18,9 @@ cargo build --target wasm32-unknown-unknown
 wasm-tools component new ../../target/wasm32-unknown-unknown/debug/sparkline_svg.wasm -o ./sparkline_svg.wasm
 ```
 
-The first command builds a Wasm binary, and the second command componentizes it.
+The first command builds a Wasm binary, and the second command componentizes it. Creating the component is optional as the Homestar runtime will create it on the fly.
 
-Start the Kubo daemon and add the Wasm component.
+Start the IPFS Kubo daemon, and add the Wasm component.
 
 ```sh
 ipfs dameon
@@ -39,13 +39,13 @@ The `args` are the data that will be used to generate the SVG.
 
 ```json
 "args": [
-  [1, 0, 5, 4, 8, 10, 15, 10, 5, 4], // data points
+  [1, 0, 5, 4, 8, 10, 20, 10, 5, 4], // data points
   "An SVG Title", // SVG title for accessibility
   "A SVG Description", // SVG description for accessibility
   500, // width
   200, // height
   "#2e4374", // line color
-  "#7c81ad" // fill color, set to transparent for no fill
+  "#7c81ad" // fill color, set to "transparent" for no fill
 ],
 ```
 
@@ -59,25 +59,19 @@ Start the Homestar runtime.
 homestar start
 ```
 
-In a separate terminal window, run the workflow
+In a separate terminal window, run the workflow.
 
 ```sh
 homestar run -w workflow.json
 ```
 
-The Homestar node will log a message that looks like:
+This command will output a table with a progress section. Copy the `cid` from the progress section and retrieve the associated receipt from Kubo. For example:
 
 ```sh
-ts=2024-01-01T02:53:07.324951Z level=debug target=homestar_runtime::event_handler::notification message="emitting receipt to WebSocket" subject=notification.receipt category=notification cid=bafyrmihiazhc3lk2eyvaoom7fdmgv7trwchecslqbqjpydnop7hffazl2m
+ipfs dag get bafyrmihk2ibe3lud2mdzbjjr2yc47ufynicomphhbhmctgewpb3uudpgia | jq ."out[1]" --raw-output > output.svg
 ```
 
-Take the `cid` from the message and retrieve the computed receipt from IPFS.
-
-```sh
-ipfs dag get bafyrmihiazhc3lk2eyvaoom7fdmgv7trwchecslqbqjpydnop7hffazl2m | jq ."out[1]" --raw-output > output.svg
-```
-
-We use `jq` to extract the SVG from the receipt `out` field and write it to an `output.svg` file.
+This command uses `jq` to extract the SVG from the receipt `out` field and writes it to an `output.svg` file.
 
 [homestar]: https://docs.everywhere.computer/getting-started/setup-your-local-node#installing-homestar
 [kubo]: https://docs.ipfs.tech/install/command-line/#install-official-binary-distributions
