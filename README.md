@@ -21,3 +21,11 @@ wasm-tools component new target/wasm32-unknown-unknown/debug/sparkline_svg.wasm 
 ```
 
 [cli]: examples/cli/README.md
+
+## Features
+
+The `vector-effects` feature uses `vector-effect="non-scaling-stroke"` and is set by default. If your use case does not support vector effects, compile with:
+
+```sh
+cargo build --target wasm32-unknown-unknown --no-default-features
+```

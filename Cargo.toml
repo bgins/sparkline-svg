@@ -13,7 +13,8 @@ wit-bindgen = "0.13"
 [lib]
 doc = false
 bench = false
-crate-type = ["cdylib"]
+crate-type = ["cdylib", "rlib"]
 
 [features]
-default = []
+default = ['vector-effects']
+vector-effects = []
